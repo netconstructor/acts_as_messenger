@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "acts_as_messenger"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "mn@mcaddie.com"
+    gem.summary = "Standard facebook-style messaging system. Not bound to any friendship structure. Integrates directly into your User model."
+    gem.description = "Standard facebook-style messaging system. Not bound to any friendship structure. Integrates directly into your User model. Allows for users to comment on a thread, leave a thread, and be updated when a thread is commented on."
+    gem.email = "mdnelson30@gmail.com"
     gem.homepage = "http://github.com/mnelson/acts_as_messenger"
     gem.authors = ["Mike Nelson"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+		gem.add_development_dependency "active_record"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

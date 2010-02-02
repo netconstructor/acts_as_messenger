@@ -1,17 +1,65 @@
 = acts_as_messenger
 
-Description goes here.
+Standard facebook-style messaging system. Not bound to any friendship structure. Integrates directly into your User model. Allows for users to comment on a thread, leave a thread, and be updated when a thread is commented on.
 
-== Note on Patches/Pull Requests
+
+== Installation
+
+Install the gem
+
+ gem install acts_as_messenger
+
+Generate the necessary classes and migrations
+
+ script/generate acts_as_messenger
+
+Migrate the DB
+
+ rake db:migrate
+
+Add acts_as_messenger to your user model
+
+ class User < ActiveRecord::Base
+  ...
+  acts_as_messenger
+  ...
+ end
+
+== Usage
+
+With acts_as_messenger now incorporated into your User model, you have access to helper methods for creating messages and recipients. It's as simple as calling the send_message(title, body, recipients) method:
+
+ mike = User.find 4
+ john = User.find 3
+ sky = User.find 2
+
+ thread = mike.send_message('Message Title', 'Message Body', [john, sky])
+  # OR
+ thread = mike.send_message('Message Title', 'Message Body', [3, 2])
+
+The recipients of the message can be an array of AR objects or can be Fixnum's (or any combination). In the case of a Fixnum, the class type is assumed to be the same as the sending class.
+---
+From the thread object you can access the participants of the message directly. Participants are considered as the author of the message and anyone who's commented on the thread.
+
+ thread.participants
+  => [mike]
+
+ john.comment_on(thread, 'Some comment')
+
+ thread.participants
+  => [mike, john]
+
+=== Privacy
+
+All threads have a private_thread field. This allows the can_be_viewed_by? method to be utilized. The can_be_viewed_by? method checks to see if the object is either the author or one of the recipient objects:
+
+ random_user = User.find 490
+ thread.can_be_viewed_by?(random_user)
+  => false
+
+ thread.can_be_viewed_by?(john)
+  => true
  
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
-
 == Copyright
 
 Copyright (c) 2010 Mike Nelson. See LICENSE for details.
