@@ -20,7 +20,7 @@ module SocialButterfly
     module InstanceMethods
       def send_message(title, body, recips)
         thread = ::MessageThread.create(:author => self, :title => title, :body => body, :private_thread => true)
-        thread.recipients = [recips].flatten.uniq.collect{|r| rdata = recipient_data(r); thread.recipients.create(:receiver_id => rdata[0], :receiver_type => rdata[1])}
+        thread.recipients = [recips].flatten.uniq.collect{|recip| rdata = recipient_data(recip); thread.recipients.create(:receiver_id => rdata[0], :receiver_type => rdata[1])}
         thread
       end
       def recipient_for(message)
@@ -31,7 +31,7 @@ module SocialButterfly
         if message && body
           message.comments.create(:author => self, :body => body)
           recip = recipient_for(message)
-          (message.recipients - [recip].compact).each{|r| r.unread!}
+          (message.recipients - [recip].compact).each{|recipient| recipient.unread!}
           true
         else
           false

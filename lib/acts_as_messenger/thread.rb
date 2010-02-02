@@ -17,7 +17,7 @@ module SocialButterfly
         has_many :comments, :as => :commentable, :dependent => :destroy
         has_many :comment_participants, :through => :comments, :source => :author, :uniq => true
         
-        named_scope :by_user, lambda {|u| u && {:conditions => ['author_id = ?', u.id]} || {}}
+        named_scope :by_user, lambda {|user| user && {:conditions => ['author_id = ?', user.id]} || {}}
      
       end
     end
