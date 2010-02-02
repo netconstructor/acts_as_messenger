@@ -12,6 +12,6 @@ class ActsAsMessengerGenerator < Rails::Generator::Base
 	end
 	
 	def file_name
-		"acts_as_messenger"
+		"acts_as_messenger_migration"
 	end
 end
