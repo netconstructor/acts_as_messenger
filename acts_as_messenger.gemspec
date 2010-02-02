@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_messenger}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Nelson"]
@@ -25,9 +25,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "acts_as_messenger.gemspec",
      "generators/acts_as_messenger/acts_as_messenger_generator.rb",
-     "generators/acts_as_messenger/templates/migrations/create_comments.rb",
-     "generators/acts_as_messenger/templates/migrations/create_message_threads.rb",
-     "generators/acts_as_messenger/templates/migrations/create_recipients.rb",
+     "generators/acts_as_messenger/templates/migrations/acts_as_messenger_migration.rb",
      "generators/acts_as_messenger/templates/models/comment.rb",
      "generators/acts_as_messenger/templates/models/message_thread.rb",
      "generators/acts_as_messenger/templates/models/recipient.rb",
