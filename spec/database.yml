@@ -1,7 +1,0 @@
-mysql:
- adapter: mysql
- encoding: utf8
- database: gem_test
- username: root
- password:
- pool: 5
