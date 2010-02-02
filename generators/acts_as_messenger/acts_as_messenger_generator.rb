@@ -3,9 +3,9 @@ class ActsAsMessengerGenerator < Rails::Generator::Base
 	def manifest 
 		record do |m|
 			
-			%w(comments message_threads recipients).each do |model|
+			%w(comment message_thread recipient).each do |model|
 				m.file "models/#{model}.rb", "app/models/#{model}.rb"
-				m.migration_template "migrations/create_#{model}.rb", "db/migrate"
+				m.migration_template "migrations/create_#{model.pluralize}.rb", "db/migrate"
 			end
 			
 		end
