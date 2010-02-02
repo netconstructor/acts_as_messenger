@@ -9,7 +9,7 @@ require 'spec/autorun'
 require 'models/user.rb'
 require File.dirname(__FILE__) + "/../lib/acts_as_messenger/thread"
 %w(comment message_thread recipient).each do |model|
-	require File.dirname(__FILE__) + "/../generators/acts_as_messenger/models/#{model}.rb"
+	require File.dirname(__FILE__) + "/../generators/acts_as_messenger/templates/models/#{model}.rb"
 end
 
 ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + '/debug.log')
