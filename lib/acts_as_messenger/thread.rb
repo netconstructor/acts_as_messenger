@@ -14,7 +14,7 @@ module SocialButterfly
         validates_inclusion_of :private_thread, :in => [true, false]
 
         belongs_to :author, :class_name => 'User'
-        has_many :comments, :as => :commentable, :dependent => :destroy
+        has_many :comments, :as => :commentable, :dependent => :destroy, :include => :author
         has_many :comment_participants, :through => :comments, :source => :author, :uniq => true
         
         named_scope :by_user, lambda {|user| user && {:conditions => ['author_id = ?', user.id]} || {}}
