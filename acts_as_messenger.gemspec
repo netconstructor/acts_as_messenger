@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_messenger}
-  s.version = "0.0.6"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Nelson"]
-  s.date = %q{2010-02-02}
+  s.date = %q{2010-02-03}
   s.description = %q{Standard facebook-style messaging system. Not bound to any friendship structure. Integrates directly into your User model. Allows for users to comment on a thread, leave a thread, and be updated when a thread is commented on.}
   s.email = %q{mdnelson30@gmail.com}
   s.extra_rdoc_files = [
@@ -56,14 +56,11 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_development_dependency(%q<active_record>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_dependency(%q<active_record>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
-    s.add_dependency(%q<active_record>, [">= 0"])
   end
 end
 
