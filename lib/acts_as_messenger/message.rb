@@ -7,7 +7,7 @@ module SocialButterfly
     
     module ClassMethods
       def acts_as_messenger
-          has_many :recipients, :as => :receiver, :include => :message_thread
+          has_many :recipients, :as => :receiver, :include => {:message_thread => :comments}
           has_many :unread_recipients, :source => :recipients, :class_name => 'Recipient', :as => :receiver, :conditions => {:read => false}
           has_many :read_recipients, :source => :recipients, :class_name => 'Recipient', :as => :receiver, :conditions => {:read => true}
 
